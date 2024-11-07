@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envelope Letter</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .text {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+        }
+
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: #f8b400;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .envelope::before, .envelope::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        /* Envelope Flaps */
+        .envelope::before {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 150px 100px 150px;
+            border-color: transparent transparent #f39c12 transparent;
+            transition: transform 0.3s;
+        }
+
+        .envelope::after {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 100px 150px 0 150px;
+            border-color: #f39c12 transparent transparent transparent;
+        }
+
+        /* Letter Content */
+        .letter {
+            position: absolute;
+            top: 100px;
+            width: 280px;
+            background-color: white;
+            border-radius: 5px;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            color: #333;
+            height: auto; /* Allows the letter content to expand */
+            max-height: 300px; /* Limit the maximum height if needed */
+            overflow-y: auto; /* Adds scroll if content overflows */
+        }
+
+        .envelope.open .letter {
+            transform: scaleY(1);
+        }
+
+        .message {
+            padding-top: 70px;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="text">
+        <h1>Click to open <br> don't worry, it's not a virus!</h1>
+    </div>
+
+    <div class="envelope" onclick="toggleEnvelope()">
+        <div class="letter" id="letter-content">
+            <p class="message">
+                <!-- Your message goes here -->
+                Hi bhea,<br>
+               <br>
+               Hi, I know your trust might have been tested with the link or page I sent, and I’m sure you already have an idea of who’s really behind it. I just want to say that I miss you so much. Whenever I feel like crying, you're the first person who comes to my mind, and I said to myself “Oh, right, bhea actually cut me off now… so where do I go?” Don’t get me wrong; don’t think I only think of you when I’m sad. NO, a big NO, because I think of you even when I’m wondering how you’re doing. I wonder how things are going with your dream of becoming a police officer. Do you have someone you can share your rants with? I hope so. And do you ever miss me too, the way I miss you?
+<br><br>
+               When I feel lost, I disappear from everyone’s view and go to the nearest sea or lake, just to stare at it, because it reminds me of you. Why? Besides the sea that separates us, you’re like the ocean to me—you give me peace and freedom.
+               <br><br>
+               I won’t say more; it’s enough for me to tell you that I miss you. Take care always, you’re going to be a police officer soon. I hope we meet someday, and when that day comes, it will be the number one highlight of my life. <br><br>
+               Te quiero <br><br>
+               from: Me Islem
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function toggleEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            envelope.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
